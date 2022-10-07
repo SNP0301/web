@@ -24,5 +24,8 @@
     <html> </html> /// body와 head를 품는 html 태그. 지금 시점에서는 이게 제일 바깥 태그.
 
 
-다음은 자주 사용는 태그의 통계다.
+다음은 자주 사용는 태그의 통계다.<br>
 <img width="598" src="https://user-images.githubusercontent.com/68281918/190537367-743c333e-568c-4104-a00f-92d0cd4aff95.png">
+
+
+ <img>
