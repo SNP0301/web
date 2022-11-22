@@ -1,18 +1,13 @@
-from selenium import webdriver ### import webdriver
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 
-def open_default_url():
-    driver = webdriver.Chrome()
-    driver.get("https://schoolzone.emac.kr/gis/gis.do")
+options = Options()
+options.add_experimental_option('detach',True)
 
-    while(True):
-        pass ###  .get(url)함수가 종료되면 브라우저도 함께 종료되는 것을 방지하기 위해 무한 루프 생성
+driver = webdriver.Chrome('/opt/homebrew/bin/chromedriver',options=options)
+driver.get("https://schoolzone.emac.kr/gis/gis.do/")
 
-open_default_url()
-
-time.sleep(3)
-
-elem = driver.find_element_by_id('searchText')
-
-elem.clear()
-elem.send_keys("search text is here!")
-elem.send_keys(Keys.RETURN)
+elem = driver.find_element(By.ID,'searchText')
+elem.send_keys('hi' + Keys.ENTER)
