@@ -1,12 +1,10 @@
 from selenium import webdriver
-import time
-driver = webdriver.Chrome('/opt/homebrew/bin/chromedriver')
-driver.get("https://google.com")
+from selenium.webdriver.chrome.options import Options
 
-elem = driver.find_element_by_name('q')
 
-elem.clear()
-elem.send_keys('hi')
-elem.submit()
+options = Options()
+options.add_experimental_option('detach',True)
 
-time.sleep(100000)
+driver = webdriver.Chrome('/opt/homebrew/bin/chromedriver',options=options)
+driver.get("https://www.google.com/")
+
