@@ -20,7 +20,9 @@ driver.find_element(By.XPATH,'/html/body/div[1]/div[10]/div[1]/p/input').send_ke
 
 time.sleep(1)
 
-#cmd = "parent.fn_getSchoolArea(126.892490626667,35.2166294135392,'middleSchoolArea','vworld');"
+elem = driver.find_element(By.CSS_SELECTOR,'body > div:nth-child(4) > div:nth-child(3) > ul.address_list')
+x_addr = elem.get_attribute('x')
+y_addr = elem.get_attribute('y')
 x = "126.892490626667"
 y = "35.2166294135392"
 cmd_dup = "parent.fn_getSchoolArea("
