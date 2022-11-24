@@ -14,28 +14,20 @@ options.add_experimental_option('detach',True)
 driver = webdriver.Chrome(options=options)
 driver.get("https://schoolzone.emac.kr/gis/gis.do")
 
-school_list = pd.read_excel('/Users/snp/Documents/schools.xlsx')
-
 w_book = op.load_workbook('/Users/snp/Documents/schools.xlsx')
 w_sheet = w_book.active
 
 result_book = op.load_workbook('/Users/snp/Documents/result.xlsx')
 result_sheet = result_book.active
 
-i = 2
-
-#time.sleep(0.5) ## wait for 500m
-#driver.find_element(By.XPATH,'/html/body/div[1]/div[11]/div[1]/p/input').send_keys(Keys.ENTER)
-#driver.find_element(By.XPATH,'/html/body/div[1]/div[10]/div[1]/p/input').send_keys(Keys.ENTER)
-for i in range(1001, 2800):
+i = 3
+for i in range(1, 2800):
     search_name = w_sheet.cell(row=i, column=3).value
     print(search_name)
 
 
     school_name = driver.find_element(By.ID,'searchText')
     school_name.send_keys(search_name + Keys.ENTER)
-
-    ##driver.find_element(By.ID,'searchText').clear()
 
     e_frame = driver.find_element(By.XPATH,'//*[@id="searchIframe"]')
     driver.switch_to.frame(e_frame)
@@ -45,8 +37,7 @@ for i in range(1001, 2800):
         x_addr = elem.get_attribute('x')
         y_addr = elem.get_attribute('y')
 
-
-        cmd_dup = "parent.fn_getSchoolArea(" + x_addr + ',' + y_addr + ',\'middleSchoolArea\',\'vworld\');'
+        cmd_dup = "parent.fn_getSchoolArea(" + x_addr + ',' + y_addr + ',\'highSchoolArea\',\'vworld\');'
         driver.execute_script(cmd_dup)
         driver.switch_to.default_content()
 
@@ -55,12 +46,11 @@ for i in range(1001, 2800):
         i_frame = driver.find_element(By.XPATH,'/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/iframe')
         driver.switch_to.frame(i_frame)
 
-        area_name = driver.find_element(By.XPATH,'//*[@id="middleSchoolArea"]/div/p').text
+        area_name = driver.find_element(By.XPATH,'//*[@id="highSchoolArea"]/div/p').text
 
         result_sheet.cell(row=i, column=1).value = search_name
         result_sheet.cell(row=i, column=2).value = area_name
         result_book.save('/Users/snp/Documents/result.xlsx')
-
         print(area_name)
 
     except:
@@ -72,4 +62,5 @@ for i in range(1001, 2800):
     driver.switch_to.default_content()
     school_name.send_keys(Keys.COMMAND + 'a')
     school_name.send_keys(Keys.DELETE)
-    time.sleep(0.1)
+
+    time.sleep(0.15)
