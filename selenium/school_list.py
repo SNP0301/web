@@ -1,18 +1,12 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-## from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import Select
 
 
 import time
 import pandas as pd
 import openpyxl as op
-
-##from selenium.webdriver import ActionChains
-##from selenium.webdriver.common.keys import Keys
-##from selenium.webdriver.chrome.options import Options
-
 
 ### 0. 창을 연다 + 현재 창을 부모 창으로 지정
 driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -41,9 +35,6 @@ smallarea_category.click()
 
 schools = driver.find_elements(By.XPATH, '//*[@id="level4Box"]');
 
-i = 1
-for i in (1, 5):
-    print(schools[i])
 
 #### 강남구
 
