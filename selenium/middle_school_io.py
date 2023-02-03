@@ -24,7 +24,7 @@ driver.get("https://www.schoolinfo.go.kr/ei/ss/pneiss_a03_s0.do#")
 parent_window = driver.current_window_handle
 
 ### 1. 검색창을 클릭
-for i in range(38, 3279):
+for i in range(36, 3279):
     time.sleep(0.5)
     search_box = driver.find_element(By.XPATH, '//*[@id="searchWord"]')
     search_box.click()
@@ -72,40 +72,70 @@ for i in range(38, 3279):
     time.sleep(1)
 
     ### 10. 명시적 wait 이후 남 졸업자~무직자 및 미상, 여 졸업자~무직자 및 미상 긁기 --> 한 행에 저장
-    ##output_sheet.cell(row=i, column=1).value = i
-    ##output_sheet.cell(row=i, column=2).value = target_school_name
+    time.sleep(2)
+    if EC.presence_of_all_elements_located((By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[1]')):
+        ##남자
+        WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[1]')))
+        output_sheet.cell(row=i, column=15).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[1]').text ## 졸업자
+        output_sheet.cell(row=i, column=16).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[2]').text ## 일반고
+        output_sheet.cell(row=i, column=17).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[3]').text ## 특성화고
+        output_sheet.cell(row=i, column=18).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[4]').text ## 과학고
+        output_sheet.cell(row=i, column=19).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[5]').text ## 외고 국제고
+        output_sheet.cell(row=i, column=20).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[6]').text ## 예고 체고
+        output_sheet.cell(row=i, column=21).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[7]').text ## 마이스터고
+        output_sheet.cell(row=i, column=22).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[9]').text ## 자사고
+        output_sheet.cell(row=i, column=23).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[10]').text ## 자공고
+        output_sheet.cell(row=i, column=24).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[12]').text ## 기타
+        output_sheet.cell(row=i, column=25).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[14]').text ## 취업자
+        output_sheet.cell(row=i, column=26).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[15]').text ## 대안교육
+        output_sheet.cell(row=i, column=27).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[16]').text ## 무직 및 미상
 
-    WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[1]')))
+        ##여자
+        output_sheet.cell(row=i, column=28).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[1]').text ## 졸업자
+        output_sheet.cell(row=i, column=29).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[2]').text ## 일반고
+        output_sheet.cell(row=i, column=30).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[3]').text ## 특성화고
+        output_sheet.cell(row=i, column=31).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[4]').text ## 과학고
+        output_sheet.cell(row=i, column=32).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[5]').text ## 외고 국제고
+        output_sheet.cell(row=i, column=33).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[6]').text ## 예고 체고
+        output_sheet.cell(row=i, column=34).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[7]').text ## 마이스터고
+        output_sheet.cell(row=i, column=35).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[9]').text ## 자사고
+        output_sheet.cell(row=i, column=36).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[10]').text ## 자공고
+        output_sheet.cell(row=i, column=37).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[12]').text ## 기타
+        output_sheet.cell(row=i, column=38).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[14]').text ## 취업자
+        output_sheet.cell(row=i, column=39).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[15]').text ## 대안교육
+        output_sheet.cell(row=i, column=40).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[16]').text ## 무직 및 미상
+    
+    else: 
+        ##남자
+        WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[1]')))
+        output_sheet.cell(row=i, column=15).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[1]').text ## 졸업자
+        output_sheet.cell(row=i, column=16).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[2]').text ## 일반고
+        output_sheet.cell(row=i, column=17).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[3]').text ## 특성화고
+        output_sheet.cell(row=i, column=18).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[4]').text ## 과학고
+        output_sheet.cell(row=i, column=19).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[5]').text ## 외고 국제고
+        output_sheet.cell(row=i, column=20).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[6]').text ## 예고 체고
+        output_sheet.cell(row=i, column=21).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[7]').text ## 마이스터고
+        output_sheet.cell(row=i, column=22).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[9]').text ## 자사고
+        output_sheet.cell(row=i, column=23).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[10]').text ## 자공고
+        output_sheet.cell(row=i, column=24).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[12]').text ## 기타
+        output_sheet.cell(row=i, column=25).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[14]').text ## 취업자
+        output_sheet.cell(row=i, column=26).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[15]').text ## 대안교육
+        output_sheet.cell(row=i, column=27).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[16]').text ## 무직 및 미상
 
-    ##남자
-    output_sheet.cell(row=i, column=15).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[1]').text ## 졸업자
-    output_sheet.cell(row=i, column=16).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[2]').text ## 일반고
-    output_sheet.cell(row=i, column=17).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[3]').text ## 특성화고
-    output_sheet.cell(row=i, column=18).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[4]').text ## 과학고
-    output_sheet.cell(row=i, column=19).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[5]').text ## 외고 국제고
-    output_sheet.cell(row=i, column=20).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[6]').text ## 예고 체고
-    output_sheet.cell(row=i, column=21).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[7]').text ## 마이스터고
-    output_sheet.cell(row=i, column=22).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[9]').text ## 자사고
-    output_sheet.cell(row=i, column=23).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[10]').text ## 자공고
-    output_sheet.cell(row=i, column=24).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[12]').text ## 기타
-    output_sheet.cell(row=i, column=25).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[14]').text ## 취업자
-    output_sheet.cell(row=i, column=26).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[15]').text ## 대안교육
-    output_sheet.cell(row=i, column=27).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[16]').text ## 무직 및 미상
-
-    ##여자
-    output_sheet.cell(row=i, column=28).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[1]').text ## 졸업자
-    output_sheet.cell(row=i, column=29).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[2]').text ## 일반고
-    output_sheet.cell(row=i, column=30).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[3]').text ## 특성화고
-    output_sheet.cell(row=i, column=31).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[4]').text ## 과학고
-    output_sheet.cell(row=i, column=32).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[5]').text ## 외고 국제고
-    output_sheet.cell(row=i, column=33).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[6]').text ## 예고 체고
-    output_sheet.cell(row=i, column=34).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[7]').text ## 마이스터고
-    output_sheet.cell(row=i, column=35).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[9]').text ## 자사고
-    output_sheet.cell(row=i, column=36).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[10]').text ## 자공고
-    output_sheet.cell(row=i, column=37).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[12]').text ## 기타
-    output_sheet.cell(row=i, column=38).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[14]').text ## 취업자
-    output_sheet.cell(row=i, column=39).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[15]').text ## 대안교육
-    output_sheet.cell(row=i, column=40).value = driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[2]/td[16]').text ## 무직 및 미상
+        ##여자
+        output_sheet.cell(row=i, column=28).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[1]').text ## 졸업자
+        output_sheet.cell(row=i, column=29).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[2]').text ## 일반고
+        output_sheet.cell(row=i, column=30).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[3]').text ## 특성화고
+        output_sheet.cell(row=i, column=31).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[4]').text ## 과학고
+        output_sheet.cell(row=i, column=32).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[5]').text ## 외고 국제고
+        output_sheet.cell(row=i, column=33).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[6]').text ## 예고 체고
+        output_sheet.cell(row=i, column=34).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[7]').text ## 마이스터고
+        output_sheet.cell(row=i, column=35).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[9]').text ## 자사고
+        output_sheet.cell(row=i, column=36).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[10]').text ## 자공고
+        output_sheet.cell(row=i, column=37).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[12]').text ## 기타
+        output_sheet.cell(row=i, column=38).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[14]').text ## 취업자
+        output_sheet.cell(row=i, column=39).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[15]').text ## 대안교육
+        output_sheet.cell(row=i, column=40).value = driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[2]/td[16]').text ## 무직 및 미상
 
 
     
