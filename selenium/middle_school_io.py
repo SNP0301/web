@@ -24,8 +24,8 @@ driver.get("https://www.schoolinfo.go.kr/ei/ss/pneiss_a03_s0.do#")
 parent_window = driver.current_window_handle
 
 ### 1. 검색창을 클릭
-for i in range(36, 3279):
-    time.sleep(0.5)
+for i in range(67, 3279):
+    time.sleep(0.3)
     search_box = driver.find_element(By.XPATH, '//*[@id="searchWord"]')
     search_box.click()
 
@@ -69,34 +69,25 @@ for i in range(36, 3279):
     ### 9. 졸업생의 진로 현황 클릭 
     WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.XPATH,'/html/body/div/div[3]/div[2]/div/div[3]/ul/li[7]/a')))
     driver.find_element(By.XPATH,'/html/body/div/div[3]/div[2]/div/div[3]/ul/li[7]/a').click()
-    time.sleep(1)
 
     ### 10. 명시적 wait 이후 남 졸업자~무직자 및 미상, 여 졸업자~무직자 및 미상 긁기 --> 한 행에 저장
     ##남자
     td_arr = [1,2,3,4,5,6,7,9,10,12,14,15,16]
 
-    time.sleep(3)
-
-
-    print(driver.find_element(By.XPATH,'/html/body/div/div[3]/div[4]/div[3]/div[1]/div[2]/div/div[1]/table/tbody/tr[1]/td[1]').text)
-
-    ### 충북 감곡 //*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[1]
-    ### 부산 감만 //*[@id="mCSB_12_container"]/table/tbody/tr[1]/td[1]
-    ### /html/body/div/div[3]/div[4]/div[3]/div[1]/div[2]/div/div[1]/table/tbody/tr[1]/td[1]
-    ### /html/body/div/div[3]/div[4]/div[3]/div[1]/div[2]/div/div[1]/table/tbody/tr[1]/td[1]
-
-    ##mCSB_XPATH = '//*[@id=\"mCSB_' + mCSB_ID + '_container\"]/table/tbody/tr[1]/td['
-    ##print(mCSB_XPATH)
-
-
+    WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.XPATH,'/html/body/div/div[3]/div[4]/div[3]/div[1]/div[2]/div/div[1]/table/tbody/tr[1]/td[1]')))
 
     
-    ##WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[1]')))
+    k = 15
+    for j in range(0,13):
+        xpath_parameter_male = '/html/body/div/div[3]/div[4]/div[3]/div[1]/div[2]/div/div[1]/table/tbody/tr[1]/td[' + str(td_arr[j]) + ']'
+        output_sheet.cell(row=i,column=k).value = driver.find_element(By.XPATH,xpath_parameter_male).text
 
-    
 
+        xpath_parameter_female = '/html/body/div/div[3]/div[4]/div[3]/div[1]/div[2]/div/div[1]/table/tbody/tr[2]/td[' + str(td_arr[j]) + ']'
+        output_sheet.cell(row=i,column=k+13).value = driver.find_element(By.XPATH,xpath_parameter_female).text
 
-    
+        k = k + 1
+
     output_book.save('/Users/snp/web/Selenium/output.xlsx')
     time.sleep(0.5)
 
@@ -105,8 +96,8 @@ for i in range(36, 3279):
     time.sleep(1)
 
     search_box.click()
-    time.sleep(0.1)
+    time.sleep(0.5)
     search_box.send_keys(Keys.COMMAND + 'A')
-    time.sleep(0.1)
+    time.sleep(0.5)
     search_box.send_keys(Keys.DELETE)
-    time.sleep(1.5)
+    time.sleep(2)
