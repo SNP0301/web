@@ -76,23 +76,17 @@ for i in range(36, 3279):
     td_arr = [1,2,3,4,5,6,7,9,10,12,14,15,16]
 
     time.sleep(3)
-    if driver.find_element(By.XPATH,'//*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[1]').is_displayed:
-        mCSB_ID = '11'
-        print('11')
-    elif driver.find_element(By.XPATH,'//*[@id="mCSB_12_container"]/table/tbody/tr[1]/td[1]').is_displayed:
-        mCSB_ID = '12'
-        print('12')
-    elif driver.find_element(By.XPATH,'//*[@id="mCSB_13_container"]/table/tbody/tr[1]/td[1]').is_displayed:
-        mCSB_ID = '13'
-        print('13')
-    elif driver.find_element(By.XPATH,'//*[@id="mCSB_14_container"]/table/tbody/tr[1]/td[1]').is_displayed:
-        mCSB_ID = '14'
-        print('14')
 
 
-    
-    mCSB_XPATH = '//*[@id=\"mCSB_' + mCSB_ID + '_container\"]/table/tbody/tr[1]/td['
-    print(mCSB_XPATH)
+    print(driver.find_element(By.XPATH,'/html/body/div/div[3]/div[4]/div[3]/div[1]/div[2]/div/div[1]/table/tbody/tr[1]/td[1]').text)
+
+    ### 충북 감곡 //*[@id="mCSB_11_container"]/table/tbody/tr[1]/td[1]
+    ### 부산 감만 //*[@id="mCSB_12_container"]/table/tbody/tr[1]/td[1]
+    ### /html/body/div/div[3]/div[4]/div[3]/div[1]/div[2]/div/div[1]/table/tbody/tr[1]/td[1]
+    ### /html/body/div/div[3]/div[4]/div[3]/div[1]/div[2]/div/div[1]/table/tbody/tr[1]/td[1]
+
+    ##mCSB_XPATH = '//*[@id=\"mCSB_' + mCSB_ID + '_container\"]/table/tbody/tr[1]/td['
+    ##print(mCSB_XPATH)
 
 
 
