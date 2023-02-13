@@ -15,7 +15,7 @@ def clear():
     search_box.click()
     search_box.send_keys(Keys.COMMAND + 'A')
     search_box.send_keys(Keys.DELETE)
-    time.sleep(0.5)
+    time.sleep(0.7)
     return True
 
 ### input excel
@@ -32,8 +32,8 @@ driver.get("https://www.schoolinfo.go.kr/ei/ss/pneiss_a03_s0.do#")
 parent_window = driver.current_window_handle
 
 ### 1. 검색창을 클릭
-for i in range(646, 700):
-    time.sleep(0.5)
+for i in range(1126, 1500):
+    time.sleep(1)
     search_box = driver.find_element(By.XPATH, '//*[@id="searchWord"]')
     search_box.click()
 
@@ -47,7 +47,7 @@ for i in range(646, 700):
 
     ### 3. 엔터 입력
     school_name_title = '//*[@title=\"' + output_sheet.cell(row=i, column = 7).value + '\"]'
-    time.sleep(1)
+
    ### print(school_name_title)
     WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.XPATH,school_name_title)))
     driver.find_element(By.XPATH,school_name_title).click()
@@ -101,8 +101,8 @@ for i in range(646, 700):
 
     driver.close() ### 자녀 창 작업 종료
     driver.switch_to.window(parent_window) ## 부모창으로 전환   
-    time.sleep(0.5)
+    time.sleep(0.1)
 
     if(clear()==True):
+        print("[%d]: %s done"%(i,target_school_name))
         continue
-
