@@ -32,7 +32,7 @@ driver.get("https://www.schoolinfo.go.kr/ei/ss/pneiss_a03_s0.do#")
 parent_window = driver.current_window_handle
 
 ### 1. 검색창을 클릭
-for i in range(584, 3279):
+for i in range(646, 700):
     time.sleep(0.5)
     search_box = driver.find_element(By.XPATH, '//*[@id="searchWord"]')
     search_box.click()
