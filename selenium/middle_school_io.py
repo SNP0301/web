@@ -10,6 +10,14 @@ import time
 import pandas as pd
 import openpyxl as op
 
+def clear():
+    search_box = driver.find_element(By.XPATH, '//*[@id="searchWord"]')
+    search_box.click()
+    search_box.send_keys(Keys.COMMAND + 'A')
+    search_box.send_keys(Keys.DELETE)
+    time.sleep(0.5)
+    return True
+
 ### input excel
 input_book = op.load_workbook('/Users/snp/web/Selenium/search_list.xlsx')
 input_sheet = input_book.active
@@ -24,7 +32,8 @@ driver.get("https://www.schoolinfo.go.kr/ei/ss/pneiss_a03_s0.do#")
 parent_window = driver.current_window_handle
 
 ### 1. 검색창을 클릭
-for i in range(459, 3279):
+for i in range(584, 3279):
+    time.sleep(0.5)
     search_box = driver.find_element(By.XPATH, '//*[@id="searchWord"]')
     search_box.click()
 
@@ -94,9 +103,6 @@ for i in range(459, 3279):
     driver.switch_to.window(parent_window) ## 부모창으로 전환   
     time.sleep(0.5)
 
-    search_box.click()
-    time.sleep(0.5)
-    search_box.send_keys(Keys.COMMAND + 'A')
-    time.sleep(0.7)
-    search_box.send_keys(Keys.DELETE)
-    time.sleep(0.7)
+    if(clear()==True):
+        continue
+
