@@ -32,13 +32,17 @@ driver.get("https://www.schoolinfo.go.kr/ei/ss/pneiss_a03_s0.do#")
 parent_window = driver.current_window_handle
 
 ### 1. 검색창을 클릭
-for i in range(1472, 1500):
-    time.sleep(1)
+for i in range(1965, 2000):
+    time.sleep(0.5)
+
+    clear()
     search_box = driver.find_element(By.XPATH, '//*[@id="searchWord"]')
     search_box.click()
 
     ### 2. Input.txt에서 검색어를 따와서 입력
+    time.sleep(0.5)
     target_school_name = output_sheet.cell(row=i, column = 14).value
+    clear()
     search_box.click()
     search_box.send_keys(target_school_name)
     time.sleep(0.5)
@@ -101,8 +105,12 @@ for i in range(1472, 1500):
 
     driver.close() ### 자녀 창 작업 종료
     driver.switch_to.window(parent_window) ## 부모창으로 전환   
-    time.sleep(0.1)
+    time.sleep(0.5)
 
+    clear()
     if(clear()==True):
         print("[%d]: %s done"%(i,target_school_name))
-        continue
+        time.sleep(0.3)
+    else:
+        time.sleep(0.3)
+        clear()
