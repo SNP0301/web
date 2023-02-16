@@ -32,7 +32,7 @@ driver.get("https://www.schoolinfo.go.kr/ei/ss/pneiss_a03_s0.do#")
 parent_window = driver.current_window_handle
 
 ### 1. 검색창을 클릭
-for i in range(2064, 2200):
+for i in range(2485, 2500):
     time.sleep(0.5)
 
     clear()
