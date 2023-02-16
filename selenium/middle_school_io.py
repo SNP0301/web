@@ -32,7 +32,7 @@ driver.get("https://www.schoolinfo.go.kr/ei/ss/pneiss_a03_s0.do#")
 parent_window = driver.current_window_handle
 
 ### 1. 검색창을 클릭
-for i in range(1965, 2000):
+for i in range(2064, 2200):
     time.sleep(0.5)
 
     clear()
@@ -63,7 +63,7 @@ for i in range(1965, 2000):
     child_window = [window for window in all_windows if window != parent_window][0]
     driver.switch_to.window(child_window)
 
-    ### 5. 대표번호, 관할교육청 읽기
+    ### 5. 설립년도, 폐교 여부 필터링
     ## passed
 
     ### 6. 공시정보 옆 년도칸 클릭, 22년 선택
