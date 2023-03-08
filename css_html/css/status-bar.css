@@ -8,7 +8,7 @@
     width: 33%;
 }
 
-.status-bar__column:first-child {
+.status-bar__column:first-child span {
     margin-right: 5px;
 }
 
