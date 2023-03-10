@@ -1,7 +1,7 @@
-const title = document.getElementById("title");
+const h1 = document.getElementById("title");
 
 function handleTitleClick() {
-    console.log("title was clicked!");
+    h1.className = "active";
 }
 
-title.addEventListener("click", handleTitleClick);
+h1.addEventListener("click", handleTitleClick);
