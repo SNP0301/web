@@ -1,3 +1,7 @@
-const age = parseInt(prompt("enter a number"));
+const title = document.getElementById("title");
 
-console.log(age + 2);
+function handleTitleClick() {
+    console.log("title was clicked!");
+}
+
+title.addEventListener("click", handleTitleClick);
