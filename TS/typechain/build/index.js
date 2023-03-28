@@ -1,8 +1,9 @@
-class Block {
-    constructor(data) {
+var Block = /** @class */ (function () {
+    function Block(data) {
         this.data = data;
     }
-    static hello() {
+    Block.hello = function () {
         return "hi";
-    }
-}
+    };
+    return Block;
+}());
