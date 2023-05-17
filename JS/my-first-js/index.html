@@ -8,18 +8,20 @@
     <title>Normal HTML</title>
   </head>
   <body>
-    <script src="app.js"></script>
-    <input type="color" />
-    <input type="date" />
-    <input type="datetime-local" />
-    <input type="file" />
-    <input type="email" />
-    <input type="hidden" />
-    <input type="number" />
-    <input type="range" />
-    <input type="reset" />
-    <input type="search" />
-    <input type="submit" />
-    <input type="time" />
+    <script src="./app.js"></script>
+    <form id="convert-form">
+      <input id="fromNumber" type="text" />
+      <!---<input id="fromArithmetic" list="arithmetic" onclick="this.value=''" />
+
+      <datalist id="arithmetic">
+        <option value="2(Binary)"></option>
+        <option value="8(Octal)"></option>
+        <option value="10(Decimal)"></option>
+        <option value="16(Hexadecimal)"></option>
+      </datalist> ---->
+      <input type="submit" value="Convert!" />
+    </form>
+
+    <h1 id="testOutput">Test Output</h1>
   </body>
 </html>
