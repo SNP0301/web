@@ -1,5 +1,7 @@
-const title = document.getElementById("title");
+const textBox = document.querySelector(".hello h1");
 
-console.dir(title);
+function handleTitleClick() {
+  console.log("title was clicked!");
+}
 
-title.innerText = "TIGHT";
+textBox.addEventListener("click", handleTitleClick);
