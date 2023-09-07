@@ -1,10 +1,5 @@
-const player = {
-  name: "nico",
-  points: 10,
-};
+const title = document.getElementById("title");
 
-console.log(player["name"]);
+console.dir(title);
 
-player.name = "david";
-
-console.log(player["name"]);
+title.innerText = "TIGHT";
