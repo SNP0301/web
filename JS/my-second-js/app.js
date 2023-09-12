@@ -1,7 +1,8 @@
-const textBox = document.querySelector(".hello h1");
+const loginInput = document.querySelector("#login-form input");
+const loginButton = document.querySelector("#login-form button");
 
-function handleTitleClick() {
-  console.log("title was clicked!");
+function onLoginBtnClick() {
+  console.log("button!!!!!", loginInput.value, "entered");
 }
 
-textBox.addEventListener("click", handleTitleClick);
+loginButton.addEventListener("click", onLoginBtnClick);
