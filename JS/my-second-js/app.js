@@ -15,3 +15,5 @@ function handleLinkClick() {
 }
 
 loginForm.addEventListener("submit", onLoginSubmit);
+
+const savedUserllname = localStorage.getItem("username");
